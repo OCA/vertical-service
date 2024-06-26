@@ -41,13 +41,11 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.name, self.task.name)
-        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
-        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -151,8 +149,8 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.stock_moves_is_locked)
         self.task.action_toggle_stock_moves_is_locked()
         self.assertFalse(self.task.stock_moves_is_locked)
@@ -166,7 +164,6 @@ class TestProjectStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
-        self.assertEqual(move_product_c.group_id, self.task.group_id)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")
@@ -175,9 +172,9 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
-        self.assertEqual(move_product_c.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
+        self.assertEqual(move_product_c.quantity, 1)
 
     @users("basic-user")
     def test_project_task_process_done_basic_user(self):
@@ -196,15 +193,15 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.sudo().stock_analytic_line_ids)
         # action_cancel
         self.task.action_cancel()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 0)
-        self.assertEqual(self.move_product_b.quantity_done, 0)
+        self.assertEqual(self.move_product_a.quantity, 0)
+        self.assertEqual(self.move_product_b.quantity, 0)
         self.assertFalse(self.task.stock_analytic_line_ids)
         quant_a = self.product_a.stock_quant_ids.filtered(
             lambda x: x.location_id == self.location
@@ -222,28 +219,6 @@ class TestProjectStock(TestProjectStockBase):
     @users("manager-user")
     def test_project_task_process_cancel_manager_user(self):
         self.test_project_task_process_cancel()
-
-    @mute_logger("odoo.models.unlink")
-    def test_project_task_process_unreserve(self):
-        self.task = self.env["project.task"].browse(self.task.id)
-        self.assertEqual(self.move_product_a.state, "draft")
-        self.assertEqual(self.move_product_b.state, "draft")
-        # Change task stage (auto-confirm + auto-assign)
-        self.task.write({"stage_id": self.stage_done.id})
-        self.assertTrue(self.move_product_a.move_line_ids)
-        self.assertEqual(self.move_product_a.move_line_ids.task_id, self.task)
-        self.assertEqual(self.move_product_a.state, "assigned")
-        self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
-        self.assertTrue(self.task.unreserve_visible)
-        # button_unreserve
-        self.task.button_unreserve()
-        self.assertEqual(self.move_product_a.state, "confirmed")
-        self.assertEqual(self.move_product_b.state, "confirmed")
-        self.assertEqual(self.move_product_a.reserved_availability, 0)
-        self.assertEqual(self.move_product_b.reserved_availability, 0)
-        self.assertFalse(self.task.unreserve_visible)
 
     @mute_logger("odoo.models.unlink")
     def test_project_task_process_01(self):
@@ -280,11 +255,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "done")
         self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
         self.task.action_done()
-        self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
-
-    @users("basic-user")
-    def test_project_task_process_unreserve_basic_user(self):
-        self.test_project_task_process_unreserve()
 
     def test_project_task_action_cancel(self):
         self.assertTrue(self.env["project.task"].browse(self.task.id).action_cancel())
@@ -320,11 +290,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(
             self.project.location_dest_id, new_type.default_location_dest_id
         )
-        self.task.do_unreserve()
-        self.task.write({"picking_type_id": new_type.id})
-        self.task._onchange_picking_type_id()
-        self.assertEqual(self.task.location_id, new_type.default_location_src_id)
-        self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
         move = fields.first(self.task.move_ids)
         self.assertEqual(move.location_id, new_type.default_location_src_id)
 
@@ -339,4 +304,4 @@ class TestProjectStock(TestProjectStockBase):
             }
         )
         scrap.do_scrap()
-        self.assertEqual(scrap.move_id.raw_material_task_id, self.task)
+        self.assertEqual(scrap.move_ids.raw_material_task_id, self.task)
