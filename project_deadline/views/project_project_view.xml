@@ -7,16 +7,25 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <xpath expr="//span[@t-if='record.partner_id.value']" position="after">
+            <xpath
+                expr="//div[@t-if='record.date.raw_value or record.date_start.raw_value']/i"
+                position="after"
+            >
                 <t
-                    t-if="record.date.raw_value and record.date.raw_value lt (new Date())"
+                    t-if="record.date.raw_value and record.date_start.raw_value and ((new Date(record.date.raw_value)) lt (new Date()))"
                     t-set="red"
                 >oe_kanban_text_red</t>
-                <span t-attf-class="#{red || ''}">
+                <span t-attf-class="{{ record.partner_id.value ? red : ''}}">
                     <i>
                         <field name="date" />
                     </i>
                 </span>
+            </xpath>
+            <xpath
+                expr="//div[@t-if='record.date.raw_value or record.date_start.raw_value']/field[@name='date']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
