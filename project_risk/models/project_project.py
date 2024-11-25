@@ -1,5 +1,6 @@
 # Copyright 2019 Onestein
 # Copyright 2020 Manuel Calero - Tecnativa
+# Copyright 2024 Heliconia Solutions
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
@@ -20,8 +21,9 @@ class Project(models.Model):
 
     def view_risk(self):
         self.ensure_one()
-        action = self.env.ref("project_risk.project_risk_action")
-        action = action.read()[0]
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "project_risk.project_risk_action"
+        )
         action["context"] = {"default_project_id": self.id}
         action["domain"] = [("project_id", "=", self.id)]
         return action

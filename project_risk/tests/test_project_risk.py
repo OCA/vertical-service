@@ -2,8 +2,8 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProjectRisk(TransactionCase):
-    def setUp(self):
-        super().setUp()
+    def setUpClass(self):
+        super().setUpClass()
         self.project = self.env["project.project"].create(
             {"name": "Research &amp; Development", "privacy_visibility": "followers"}
         )

@@ -1,11 +1,12 @@
+# Copyright 2024 Heliconia Solutions
 {
     "name": "Project Risk",
     "summary": "MOR risk management method",
-    "author": "Onestein, Odoo Community Association (OCA)",
+    "author": "Onestein, Heliconia Solutions, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "13.0.1.0.0",
+    "version": "16.0.1.0.0",
     "depends": ["project"],
     "data": [
         "security/ir_model_access.xml",
