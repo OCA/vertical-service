@@ -9,6 +9,11 @@
                 <attribute
                     name="domain"
                 >['|', ('allowed_project_ids', 'in', [project_id]),('allowed_project_ids', '=', False)]</attribute>
+                <!-- We define this context to prevent the search_read() method in the
+                project module from filtering project tags in a way we are not interested.
+                Example: applying a limit to indirectly obtain tags to be displayed
+                (problematic if we have +100). !-->
+                <attribute name="context">{'skip_project_id': True}</attribute>
             </field>
         </field>
     </record>
