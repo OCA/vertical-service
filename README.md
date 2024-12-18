@@ -29,7 +29,7 @@ addon | version | maintainers | summary
 [project_list](project_list/) | 16.0.1.0.1 |  | Projects list view
 [project_merge](project_merge/) | 16.0.1.0.0 |  | Wizard to merge project tasks
 [project_milestone_tree](project_milestone_tree/) | 16.0.1.0.0 |  | This module adds an access to the Milestone tree view.
-[project_parent](project_parent/) | 16.0.1.0.0 |  | Project Parent
+[project_parent](project_parent/) | 16.0.1.1.0 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 16.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_pivot](project_pivot/) | 16.0.1.0.1 |  | Pivot view for projects
 [project_purchase_link](project_purchase_link/) | 16.0.1.0.0 |  | Project Purchase Link
