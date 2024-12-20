@@ -4,3 +4,4 @@
   (<https://komit-consulting.com>)
 - [Tecnativa](https://www.tecnativa.com):
   - Ernesto Tejeda
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
