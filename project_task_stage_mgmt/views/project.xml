@@ -26,15 +26,14 @@
             <page name="description" position="after">
                 <page name="stage" string="Task Stages">
                     <field name="type_ids" domain="[('user_id', '=', False)]">
-                        <tree editable="bottom">
+                        <list editable="bottom">
                             <field name="sequence" widget="handle" optional="show" />
                             <field name="name" />
                             <field name="fold" optional="show" />
                             <field name="mail_template_id" optional="show" />
                             <field name="rating_template_id" optional="show" />
                             <field name="auto_validation_state" optional="hide" />
-                            <field name="description" optional="hide" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </page>
