@@ -11,4 +11,13 @@
             </xpath>
         </field>
     </record>
+    <record id="project_sharing_project_task_view_form" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field name="priority" position="move" />
+            </xpath>
+        </field>
+    </record>
 </odoo>
