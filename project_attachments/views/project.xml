@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="priority" eval="8" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="attachment_tree_view"
+                    type="object"
+                    icon="fa-files-o"
+                >
+                    <field string="Documents" name="doc_count" widget="statinfo" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
