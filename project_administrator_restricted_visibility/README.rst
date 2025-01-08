@@ -81,6 +81,7 @@ Contributors
 * `Moduon <https://www.moduon.team>`_:
 
   * Eduardo López
+  * Eduardo de Miguel
 
 Maintainers
 ~~~~~~~~~~~
