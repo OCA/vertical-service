@@ -64,7 +64,7 @@ addon | version | maintainers | summary
 [project_timesheet_time_control](project_timesheet_time_control/) | 16.0.1.0.2 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 16.0.1.0.1 |  | Project Types
 [project_update_visible](project_update_visible/) | 16.0.1.0.0 |  | Visible project_id in project.update view form.
-[sale_project_copy_tasks](sale_project_copy_tasks/) | 16.0.1.0.3 | [![shide](https://github.com/shide.png?size=30px)](https://github.com/shide) [![EmilioPascual](https://github.com/EmilioPascual.png?size=30px)](https://github.com/EmilioPascual) | Copy tasks into sale order's project
+[sale_project_copy_tasks](sale_project_copy_tasks/) | 16.0.1.0.4 | [![shide](https://github.com/shide.png?size=30px)](https://github.com/shide) [![EmilioPascual](https://github.com/EmilioPascual.png?size=30px)](https://github.com/EmilioPascual) | Copy tasks into sale order's project
 [task_project_status](task_project_status/) | 16.0.1.0.0 |  | Show project status on the task.
 
 [//]: # (end addons)
