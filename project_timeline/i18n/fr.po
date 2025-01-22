@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 01:55+0000\n"
-"PO-Revision-Date: 2022-09-21 08:07+0000\n"
+"PO-Revision-Date: 2025-01-22 14:09+0000\n"
 "Last-Translator: Rémi <remi@le-filament.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
@@ -25,6 +25,8 @@ msgid ""
 "<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
 "title=\"Arrow\"/>"
 msgstr ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
+"\"Flèche\"/>"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
@@ -48,18 +50,18 @@ msgstr "Dernière modification"
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
 msgid "Planned Date End"
-msgstr ""
+msgstr "Date de fin planifiée"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
 msgid "Planned Date Start"
-msgstr ""
+msgstr "Date de début planifiée"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
 msgid "Planned Dates"
-msgstr ""
+msgstr "Dates planifiées"
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
@@ -69,13 +71,13 @@ msgstr "Tâche"
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_report_project_task_user
 msgid "Tasks Analysis"
-msgstr ""
+msgstr "Analyse des tâches"
 
 #. module: project_timeline
 #: code:addons/project_timeline/models/project_task.py:0
 #, python-format
 msgid "The end date must be after the start date."
-msgstr ""
+msgstr "La date de fin doit être après la date de début."
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
