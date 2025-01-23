@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_required_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_task_required_project
+#: code:addons/project_task_required_project/models/project_task.py:0
+#, python-format
+msgid "A project has not been selected for the task."
+msgstr ""
+
+#. module: project_task_required_project
+#: model:ir.model,name:project_task_required_project.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: project_task_required_project
+#: model:ir.model,name:project_task_required_project.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: project_task_required_project
+#: model_terms:ir.ui.view,arch_db:project_task_required_project.project_task_required_project_res_config_settings_view_form
+msgid ""
+"If it is active, selecting a project when creating or editing a task will be"
+" required."
+msgstr ""
+
+#. module: project_task_required_project
+#: model:ir.model.fields,field_description:project_task_required_project.field_res_company__is_project_required
+#: model:ir.model.fields,field_description:project_task_required_project.field_res_config_settings__is_project_required
+msgid "Project required on tasks"
+msgstr ""
+
+#. module: project_task_required_project
+#: model:ir.model,name:project_task_required_project.model_project_task
+msgid "Task"
+msgstr ""
