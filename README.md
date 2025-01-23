@@ -50,6 +50,7 @@ addon | version | maintainers | summary
 [project_task_note](project_task_note/) | 15.0.1.0.0 | [![carolina-fernandez](https://github.com/carolina-fernandez.png?size=30px)](https://github.com/carolina-fernandez) | Add notes in project tasks
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.3 |  | Moves task to the first fold personal stage when done
 [project_task_pull_request](project_task_pull_request/) | 15.0.1.0.1 |  | Adds a field for a PR URI to project tasks
+[project_task_required_project](project_task_required_project/) | 15.0.1.0.0 |  | Obligation to specify a project when creating/editing a task
 [project_task_stage_state](project_task_stage_state/) | 15.0.1.0.1 |  | Restore State attribute removed from Project Stages in 8.0
 [project_template](project_template/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_template_milestone](project_template_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Adds function to copy of milestones when creating a project from template
