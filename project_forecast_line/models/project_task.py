@@ -47,9 +47,9 @@ class ProjectTask(models.Model):
             return res
         self = self.with_context(project_forecast_line_task_noloop=True)
         if "forecast_recomputation_trigger" in values:
-            self._update_forecast_lines()
+            self.sudo()._update_forecast_lines()
         elif "remaining_hours" in values:
-            self._quick_update_forecast_lines()
+            self.sudo()._quick_update_forecast_lines()
         return res
 
     @api.onchange("user_id")
