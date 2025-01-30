@@ -52,7 +52,7 @@ class Project(models.Model):
         if company_id:
             self = self.with_context(project_sequence_company=company_id)
 
-        new_project = super(Project, self).create(vals)
+        new_project = super().create(vals)
         new_project.create_sequence()
 
         # Tasks must be created after the project.
@@ -68,7 +68,7 @@ class Project(models.Model):
             key = values["key"]
             update_key = self.key != key
 
-        res = super(Project, self).write(values)
+        res = super().write(values)
 
         if update_key:
             # Here we don't expect to have more than one record
@@ -83,7 +83,7 @@ class Project(models.Model):
             sequence = project.task_key_sequence_id
             project.task_key_sequence_id = False
             sequence.sudo().unlink()
-        return super(Project, self).unlink()
+        return super().unlink()
 
     def create_sequence(self):
         """
@@ -163,7 +163,7 @@ class Project(models.Model):
         counter = 0
         while not unique_key:
             if counter != 0:
-                res = "%s%s" % (text, counter)
+                res = f"{text}{counter}"
             unique_key = not bool(self.search([("key", "=", res)]))
             counter += 1
 

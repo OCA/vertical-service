@@ -1,6 +1,8 @@
 # Copyright 2017 - 2018 Modoolar <info@modoolar.com>
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
+import requests
+
 from odoo.tests.common import HttpCase, TransactionCase
 
 
@@ -42,8 +44,14 @@ class TestCommon(TransactionCase, TestMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls._super_send = requests.Session.send
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls._setup_records(cls)
+
+    @classmethod
+    def _request_handler(cls, s, r, /, **kw):
+        """Don't block external requests."""
+        return cls._super_send(s, r, **kw)
 
 
 class HttpTestCommon(HttpCase, TestMixin):
