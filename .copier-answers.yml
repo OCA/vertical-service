@@ -1,15 +1,18 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.11.1
+_commit: v1.29
 _src_path: https://github.com/OCA/oca-addons-repo-template.git
 ci: GitHub
-dependency_installation_mode: PIP
+convert_readme_fragments_to_markdown: false
+enable_checklog_odoo: false
 generate_requirements_txt: true
 github_check_license: true
+github_ci_extra_env: {}
 github_enable_codecov: true
 github_enable_makepot: true
 github_enable_stale_action: true
 github_enforce_dev_status_compatibility: true
 include_wkhtmltopdf: false
+odoo_test_flavor: Both
 odoo_version: 13.0
 org_name: Odoo Community Association (OCA)
 org_slug: OCA
@@ -18,6 +21,4 @@ repo_description: Find relevant modules for service business processes or compan
 repo_name: Odoo Project & Service Management
 repo_slug: project
 repo_website: https://github.com/OCA/project
-travis_apt_packages: []
-travis_apt_sources: []
 
